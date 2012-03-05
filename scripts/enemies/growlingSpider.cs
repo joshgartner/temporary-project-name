@@ -3,13 +3,35 @@ using System.Collections;
 
 public class growlingSpider : baseEnemy {
 	
-	protected override string Name {
+	public int m_nHealth;
+	public int m_nLevel;
+	
+	public override string Name {
 		get {
 			return "Growling Spider";
 		}
 	}
 	
-	protected override int Level {
+	public override int Level {
+		get {
+			return m_nLevel;
+		}
+		set {
+			m_nLevel = value;
+		}
+	}
+	
+	public override int Health {
+		get {
+			return m_nHealth;
+		}
+		set {
+			m_nHealth = value;
+		}			
+
+	}
+	
+	public override int Mana {
 		get {
 			throw new System.NotImplementedException ();
 		}
@@ -18,25 +40,7 @@ public class growlingSpider : baseEnemy {
 		}
 	}
 	
-	protected override int Health {
-		get {
-			throw new System.NotImplementedException ();
-		}
-		set {
-			throw new System.NotImplementedException ();
-		}
-	}
-	
-	protected override int Mana {
-		get {
-			throw new System.NotImplementedException ();
-		}
-		set {
-			throw new System.NotImplementedException ();
-		}
-	}
-	
-	protected override int Strength {
+	public override int Strength {
 		get {
 			throw new System.NotImplementedException ();
 		}
@@ -45,22 +49,34 @@ public class growlingSpider : baseEnemy {
 		}
 	} 
 	
-	protected override void meleeAttack ()
-	{
+	protected override void meleeAttack(){
 		base.meleeAttack ();
 	}
 
-	protected override void magicAttack ()
-	{
+	protected override void magicAttack(){
 		base.magicAttack ();
 	}
+	
 	// Use this for initialization
 	void Start () {
-	
+		Health = 100;
+		Level = 1;
 	}
 	
 	// Update is called once per frame
-	void Update () {
 	
-	}
+	//void OnCollisionEnter(Collision collision) {
+	//	if (collision.collider.tag == "Player") {
+	//		if (this.m_nHealth <= 0){
+	//			Destroy(this.gameObject);
+	//		}
+	//		m_nHealth -= 100;
+			//transform.Translate(0,15,0,Space.World);
+	//	}
+	//}
+	
+	//void OnTriggerEnter(Collider other) {
+		
+    //}
+	
 }

@@ -3,26 +3,30 @@ using System.Collections;
 using System.IO;
 
 public class collideTest : MonoBehaviour {
-
+	
+	growlingSpider spider;
+	
 	// Use this for initialization
 	void Start () {
-		//int level = playerAttributes.Instance.Level;
-		//StreamWriter w = new StreamWriter("C:\\123.txt",true);
-		//w.WriteLine(level);
-		//w.Close();
+		spider = new growlingSpider();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
 	}
 
 	
     void OnTriggerEnter(Collider other) {
-		//if (other.name == "Cube")
-		//
-		//Destroy(this.gameObject);
-		//}
-		other.transform.Translate(5,5,20,Space.Self);
+		if (spider.Health <= 0)
+		{
+			Destroy(this.gameObject);
+		}
+		spider.Health -= 100;
+		other.transform.Translate(2,2,0,Space.Self);
+		transform.Translate(0,0,10,Space.World);
+		
+		
     }
 
 }
